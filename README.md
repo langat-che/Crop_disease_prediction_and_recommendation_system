@@ -1,1 +1,1 @@
-# Crop_disease_prediction_and_recommendation_system
+# Crop Disease Prediction and Recommendation System

@@ -3,7 +3,7 @@ services:
   - type: web
     name: crop-disease-predictor-api
     runtime: python
-    region: ohio  # Choose the region closest to your users
+    region: nairobi 
     buildCommand: pip install -r requirements.txt
     startCommand: cd backend && python app.py
     envVars:

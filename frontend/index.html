@@ -168,7 +168,7 @@
             formData.append('crop', crop);
             formData.append('file', file);
 
-            resultDiv.innerText = 'Uploading and predicting... Please wait.';
+            resultDiv.innerText = 'Uploading and predicting... Please wait. This may take up to 30 seconds if the server was idle (free tier limitation).';
             resultDiv.className = 'loading';
 
             if (apiUrl === "YOUR_RENDER_DEPLOYED_API_URL" || !apiUrl) {

@@ -11,4 +11,4 @@ services:
         value: 10000
       - key: PYTHON_VERSION
         value: 3.9.0
-    plan: free  # Adjust as needed for your requirements
+    plan: free  

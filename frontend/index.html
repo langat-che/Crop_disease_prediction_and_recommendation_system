@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Disease Predictor</title> 
+    <title>Crop Disease Predictor</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -132,7 +132,7 @@
     <footer>Powered by <strong>KaaRada</strong></footer>
 
     <script>
-        const apiUrl = "https://crop-disease-predictor-api-dw29.onrender.com"; 
+        const apiUrl = "https://crop-disease-predictor-api.onrender.com"; // Update this URL to match your actual Render deployment URL
 
         function previewImage(event) {
             const reader = new FileReader();
@@ -147,7 +147,7 @@
                 preview.src = "#";
                 preview.style.display = 'none';
             }
-            document.getElementById('result').innerHTML = 'Image selected. Click predict.'; 
+            document.getElementById('result').innerHTML = 'Image selected. Click predict.';
             document.getElementById('result').className = '';
         }
 

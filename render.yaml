@@ -3,12 +3,17 @@ services:
   - type: web
     name: crop-disease-predictor-api
     runtime: python
-    region: frankfurt 
-    buildCommand: pip install -r requirements.txt
+    region: frankfurt  # You can change this to a region closer to your users if needed
+    buildCommand: pip install -r requirements.txt && python setup_models.py
     startCommand: cd backend && python app.py
     envVars:
       - key: PORT
         value: 10000
       - key: PYTHON_VERSION
         value: 3.10.0
-    plan: free  
+    plan: free
+    # Ensure models are included in the deployment
+    disk:
+      name: models-disk
+      mountPath: /opt/render/project/src/best_models
+      sizeGB: 1

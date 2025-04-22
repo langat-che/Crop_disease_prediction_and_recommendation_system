@@ -32,7 +32,25 @@ app.add_middleware(
 # Determine paths relative to the current file's location (backend/)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir) # Go up one level to project root
-MODEL_DIR = os.path.join(project_root, 'best_models') # Path to models at root level
+
+# Try multiple possible model directories to be more robust in different environments
+possible_model_dirs = [
+    os.path.join(project_root, 'best_models'),  # Standard local path
+    '/opt/render/project/src/best_models',      # Render.com path with disk mount
+    os.path.join(project_root, 'models')        # Fallback to models directory
+]
+
+# Find the first directory that exists
+MODEL_DIR = None
+for dir_path in possible_model_dirs:
+    if os.path.exists(dir_path):
+        MODEL_DIR = dir_path
+        logger.info(f"Found models directory at: {MODEL_DIR}")
+        break
+
+if MODEL_DIR is None:
+    logger.critical("Could not find any valid models directory!")
+    MODEL_DIR = possible_model_dirs[0]  # Default to first option even if it doesn't exist
 
 # Image size MUST match the training size
 IMG_SIZE = (160, 160)

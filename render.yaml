@@ -1,0 +1,14 @@
+services:
+  # Backend API service
+  - type: web
+    name: crop-disease-predictor-api
+    runtime: python
+    region: ohio  # Choose the region closest to your users
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && python app.py
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.9.0
+    plan: free  # Adjust as needed for your requirements

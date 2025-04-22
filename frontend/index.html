@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Predictor</title> <!-- Changed Title -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 25px;
+            background-color: #f8f9fa;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #0056b3; /* Darker blue */
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        select, input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding in width */
+            font-size: 1em;
+        }
+        button {
+            background-color: #28a745; /* Green */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green */
+            transform: translateY(-1px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 95%;
+            min-height: 50px;
+            text-align: center;
+            font-size: 1.15em;
+            line-height: 1.6;
+            word-wrap: break-word;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+        #result.loading {
+            color: #6c757d; /* Gray */
+            font-style: italic;
+        }
+        #result.error {
+            color: #dc3545; /* Red */
+            font-weight: bold;
+            border-color: #f5c6cb;
+            background-color: #f8d7da;
+        }
+         #result strong {
+            color: #0056b3;
+        }
+        #result .crop-name {
+            text-transform: capitalize;
+            font-style: italic;
+            color: #495057;
+         }
+         #result .confidence {
+            font-size: 0.9em;
+            color: #555;
+         }
+        img#preview {
+            max-width: 90%;
+            max-height: 250px;
+            margin-top: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: none; /* Hide initially */
+        }
+        footer {
+            margin-top: 50px;
+            color: #6c757d;
+            font-size: 0.9em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crop Disease Predictor</h1>
+
+    <label for="crop">1. Select Crop:</label>
+    <select id="crop">
+        <option value="maize">Maize</option>
+        <option value="onion">Onion</option>
+        <option value="tomato">Tomato</option>
+    </select>
+
+    <label for="image">2. Choose Image File:</label>
+    <input type="file" id="image" accept="image/*" onchange="previewImage(event)" />
+    <img id="preview" src="#" alt="Image Preview"/>
+
+    <button onclick="uploadAndPredict()">3. Predict Disease</button>
+
+    <div id="result">Select crop and image, then click predict.</div>
+
+    <footer>Powered by <strong>KaaRada</strong></footer>
+
+    <script>
+        const apiUrl = "https://crop-disease-predictor-api.onrender.com"; // This should be your actual Render URL
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            const preview = document.getElementById('preview');
+            reader.onload = function(){
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                preview.src = "#";
+                preview.style.display = 'none';
+            }
+            document.getElementById('result').innerHTML = 'Image selected. Click predict.'; // Clear previous result
+            document.getElementById('result').className = '';
+        }
+
+        async function uploadAndPredict() {
+            const cropSelect = document.getElementById('crop');
+            const fileInput = document.getElementById('image');
+            const resultDiv = document.getElementById('result');
+
+            const crop = cropSelect.value;
+
+            if (!fileInput.files.length) {
+                alert('Please choose an image file first.');
+                return;
+            }
+            const file = fileInput.files[0];
+
+            const formData = new FormData();
+            formData.append('crop', crop);
+            formData.append('file', file);
+
+            resultDiv.innerText = 'Uploading and predicting... Please wait.';
+            resultDiv.className = 'loading';
+
+            if (apiUrl === "YOUR_RENDER_DEPLOYED_API_URL" || !apiUrl) {
+                alert("API URL is not set correctly in index.html.");
+                resultDiv.innerText = 'API URL not configured in frontend.';
+                resultDiv.className = 'error';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${apiUrl}/predict`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                resultDiv.className = ''; // Reset class
+
+                if (!response.ok) {
+                    let errorMsg = `Error ${response.status}: ${response.statusText}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMsg = `Error: ${errorData.detail || errorData.error || JSON.stringify(errorData)}`;
+                    } catch (e) { /* Ignore if response isn't JSON */ }
+                    resultDiv.innerText = errorMsg;
+                    resultDiv.className = 'error';
+                    console.error("API Response Error:", errorMsg);
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.error) { // Handle application-level errors
+                    resultDiv.innerText = 'Error: ' + data.error;
+                    resultDiv.className = 'error';
+                } else {
+                    // Display successful result
+                    resultDiv.innerHTML =
+                        `<span class=\"crop-name\">${data.crop}:</span> Predicted: <strong>${data.prediction}</strong><br>` +
+                        `<span class=\"confidence\">(Confidence: ${(data.confidence * 100).toFixed(1)}%)</span>`;
+                }
+
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                resultDiv.innerText = 'Prediction failed. Could not reach API or network error. Check console.';
+                resultDiv.className = 'error';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+2025-04-22 11:12:35.041157: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-04-22 11:12:39.190500: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+--- Starting Evaluation for Model: models\tomato_initial_best_img160_dr0.4_lr0.001_aug_mild.keras ---
+
+Step 1: Getting paths and class information...
+Found 14 classes for tomato: ['Healthy_fruit', 'Mite_P', 'Tomato_late_blight_d', 'alternaria_d', 'alternaria_mite_d', 'bacterial_floundering_d', 'blossom_end_rot_d', 'fusarium_d', 'healthy_leaf', 'helicoverpa_armigera_p', 'nitrogen_exces_d', 'sunburn_d', 'tuta_absoluta_p', 'virosis_d']
+Using Image Size: (160, 160)
+Using Class Names: ['Healthy_fruit', 'Mite_P', 'Tomato_late_blight_d', 'alternaria_d', 'alternaria_mite_d', 'bacterial_floundering_d', 'blossom_end_rot_d', 'fusarium_d', 'healthy_leaf', 'helicoverpa_armigera_p', 'nitrogen_exces_d', 'sunburn_d', 'tuta_absoluta_p', 'virosis_d']
+
+Step 2: Loading and configuring test dataset...
+  Configuring dataset from: Data\tomato_with_data_augmentation\test
+  Image Size: (160, 160), Batch Size: 8, Shuffle Files: False, Augment: False (mild)
+Found 8438 files belonging to 14 classes.
+2025-04-22 11:12:55.247309: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-22 11:15:19.887011: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+  Found 8440 files belonging to 14 classes.
+  Dataset caching enabled.
+  Dataset prefetching enabled.
+
+Step 3: Loading model from models\tomato_initial_best_img160_dr0.4_lr0.001_aug_mild.keras...
+  Model loaded successfully.
+
+Step 4: Evaluating model performance...
+
+--- Overall Performance ---
+  Test Loss: 0.8981
+  Test Accuracy: 0.7156 (71.56%)
+
+Step 5: Generating predictions for detailed reports...
+  Generated predictions for 8438 samples.
+  Scikit-learn Accuracy (Verification): 0.7156
+
+Step 6: Generating Classification Report...
+                         precision    recall  f1-score   support
+
+          Healthy_fruit     0.8151    0.8385    0.8266       904
+                 Mite_P     0.5340    0.3793    0.4435       580
+   Tomato_late_blight_d     0.6701    0.5462    0.6019       238
+           alternaria_d     0.6364    0.5045    0.5628       444
+      alternaria_mite_d     0.8614    0.7311    0.7909       119
+bacterial_floundering_d     0.4890    0.7303    0.5858       304
+      blossom_end_rot_d     0.5714    0.8235    0.6747       272
+             fusarium_d     0.5500    0.3793    0.4490       232
+           healthy_leaf     0.7329    0.7329    0.7329      1363
+ helicoverpa_armigera_p     0.6480    0.7135    0.6791       356
+       nitrogen_exces_d     0.7143    0.8261    0.7661       230
+              sunburn_d     0.9221    0.5966    0.7245       238
+        tuta_absoluta_p     0.9651    0.6058    0.7444       274
+              virosis_d     0.7539    0.8093    0.7806      2884
+
+               accuracy                         0.7156      8438
+              macro avg     0.7045    0.6584    0.6688      8438
+           weighted avg     0.7199    0.7156    0.7113      8438
+
+  Classification report saved to: reports\tomato_initial_best_img160_dr0.4_lr0.001_aug_mild_classification_report.txt
+
+Step 7: Generating Confusion Matrix...
+Saved confusion matrix plot to: reports\tomato_initial_best_img160_dr0.4_lr0.001_aug_mild_confusion_matrix.png
+
+Total evaluation duration: 3.01 minutes.

@@ -1,0 +1,17 @@
+Classification Report for Model: onion_finetuned_L100_ftlr5e-06_from_onion_initial_best_img160_dr0.4_lr0.001_aug_mild.keras
+Evaluated on: Data\onion with data augmentation\test
+Overall Loss: 0.4638
+Overall Accuracy: 0.8961
+
+                precision    recall  f1-score   support
+
+ Bulb_blight_d     0.9548    1.0000    0.9769       380
+  Healthy_leaf     0.8804    0.9374    0.9080       958
+  alternaria_d     0.7413    0.7460    0.7437       630
+caterpillars_p     0.9760    0.9602    0.9681      1358
+    fusarium_d     0.8914    0.8086    0.8480      1076
+     virosis_d     0.8711    0.9515    0.9095       412
+
+      accuracy                         0.8961      4814
+     macro avg     0.8858    0.9006    0.8923      4814
+  weighted avg     0.8967    0.8961    0.8956      4814

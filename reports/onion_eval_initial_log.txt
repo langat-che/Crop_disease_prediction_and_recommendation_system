@@ -1,0 +1,53 @@
+2025-04-22 08:48:45.294278: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-04-22 08:48:48.600895: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+--- Starting Evaluation for Model: models\onion_initial_best_img160_dr0.4_lr0.001_aug_mild.keras ---
+
+Step 1: Getting paths and class information...
+Found 6 classes for onion: ['Bulb_blight_d', 'Healthy_leaf', 'alternaria_d', 'caterpillars_p', 'fusarium_d', 'virosis_d']
+Using Image Size: (160, 160)
+Using Class Names: ['Bulb_blight_d', 'Healthy_leaf', 'alternaria_d', 'caterpillars_p', 'fusarium_d', 'virosis_d']
+
+Step 2: Loading and configuring test dataset...
+  Configuring dataset from: Data\onion with data augmentation\test
+  Image Size: (160, 160), Batch Size: 8, Shuffle Files: False, Augment: False (mild)
+Found 4814 files belonging to 6 classes.
+2025-04-22 08:48:57.789611: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-22 08:50:22.367703: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+  Found 4816 files belonging to 6 classes.
+  Dataset caching enabled.
+  Dataset prefetching enabled.
+
+Step 3: Loading model from models\onion_initial_best_img160_dr0.4_lr0.001_aug_mild.keras...
+  Model loaded successfully.
+
+Step 4: Evaluating model performance...
+
+--- Overall Performance ---
+  Test Loss: 0.4409
+  Test Accuracy: 0.8774 (87.74%)
+
+Step 5: Generating predictions for detailed reports...
+  Generated predictions for 4814 samples.
+  Scikit-learn Accuracy (Verification): 0.8774
+
+Step 6: Generating Classification Report...
+                precision    recall  f1-score   support
+
+ Bulb_blight_d     0.9744    1.0000    0.9870       380
+  Healthy_leaf     0.8739    0.8685    0.8712       958
+  alternaria_d     0.7538    0.6317    0.6874       630
+caterpillars_p     0.9664    0.9735    0.9699      1358
+    fusarium_d     0.7769    0.8736    0.8224      1076
+     virosis_d     0.9617    0.8544    0.9049       412
+
+      accuracy                         0.8774      4814
+     macro avg     0.8845    0.8669    0.8738      4814
+  weighted avg     0.8780    0.8774    0.8761      4814
+
+  Classification report saved to: reports\onion_initial_best_img160_dr0.4_lr0.001_aug_mild_classification_report.txt
+
+Step 7: Generating Confusion Matrix...
+Saved confusion matrix plot to: reports\onion_initial_best_img160_dr0.4_lr0.001_aug_mild_confusion_matrix.png
+
+Total evaluation duration: 1.67 minutes.

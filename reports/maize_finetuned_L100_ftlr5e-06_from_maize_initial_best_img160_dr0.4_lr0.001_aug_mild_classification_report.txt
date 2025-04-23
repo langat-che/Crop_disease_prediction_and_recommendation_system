@@ -1,0 +1,20 @@
+Classification Report for Model: maize_finetuned_L100_ftlr5e-06_from_maize_initial_best_img160_dr0.4_lr0.001_aug_mild.keras
+Evaluated on: Data\maize dataset with data augmentation\test
+Overall Loss: 0.4358
+Overall Accuracy: 0.8836
+
+                         precision    recall  f1-score   support
+
+    Abiotics_diseases_d     0.3218    0.7000    0.4409       120
+               Aphids_p     0.8451    1.0000    0.9160        60
+           Healthy_leaf     0.8232    0.9071    0.8631      1119
+                 Rust_d     0.5098    0.6500    0.5714        80
+Spodoptera_frugiperda_a     0.9181    0.7713    0.8383      1032
+Spodoptera_frugiperda_p     0.9282    0.9560    0.9419      1000
+        curvulariosis_d     0.8203    0.6604    0.7317       477
+   helminthosporiosis_d     0.5272    0.7119    0.6058       177
+               stripe_d     0.9548    0.9275    0.9410      4278
+
+               accuracy                         0.8836      8343
+              macro avg     0.7387    0.8094    0.7611      8343
+           weighted avg     0.8985    0.8836    0.8879      8343

@@ -1,0 +1,56 @@
+2025-04-22 00:43:26.360700: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-04-22 00:43:32.496279: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+--- Starting Evaluation for Model: models\maize_initial_best_img160_dr0.4_lr0.001_aug_mild.keras ---
+
+Step 1: Getting paths and class information...
+Found 9 classes for maize: ['Abiotics_diseases_d', 'Aphids_p', 'Healthy_leaf', 'Rust_d', 'Spodoptera_frugiperda_a', 'Spodoptera_frugiperda_p', 'curvulariosis_d', 'helminthosporiosis_d', 'stripe_d']
+Using Image Size: (160, 160)
+Using Class Names: ['Abiotics_diseases_d', 'Aphids_p', 'Healthy_leaf', 'Rust_d', 'Spodoptera_frugiperda_a', 'Spodoptera_frugiperda_p', 'curvulariosis_d', 'helminthosporiosis_d', 'stripe_d']
+
+Step 2: Loading and configuring test dataset...
+  Configuring dataset from: Data\maize dataset with data augmentation\test
+  Image Size: (160, 160), Batch Size: 8, Shuffle Files: False, Augment: False (mild)
+Found 8343 files belonging to 9 classes.
+2025-04-22 00:43:52.608639: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-04-22 00:46:48.205901: I tensorflow/core/framework/local_rendezvous.cc:407] Local rendezvous is aborting with status: OUT_OF_RANGE: End of sequence
+  Found 8344 files belonging to 9 classes.
+  Dataset caching enabled.
+  Dataset prefetching enabled.
+
+Step 3: Loading model from models\maize_initial_best_img160_dr0.4_lr0.001_aug_mild.keras...
+  Model loaded successfully.
+
+Step 4: Evaluating model performance...
+
+--- Overall Performance ---
+  Test Loss: 0.4817
+  Test Accuracy: 0.8472 (84.72%)
+
+Step 5: Generating predictions for detailed reports...
+  Generated predictions for 8343 samples.
+  Scikit-learn Accuracy (Verification): 0.8472
+
+Step 6: Generating Classification Report...
+                         precision    recall  f1-score   support
+
+    Abiotics_diseases_d     0.3095    0.3250    0.3171       120
+               Aphids_p     0.7895    1.0000    0.8824        60
+           Healthy_leaf     0.8041    0.8400    0.8217      1119
+                 Rust_d     0.2705    0.7000    0.3902        80
+Spodoptera_frugiperda_a     0.9057    0.7442    0.8170      1032
+Spodoptera_frugiperda_p     0.9489    0.9280    0.9383      1000
+        curvulariosis_d     0.6468    0.7296    0.6857       477
+   helminthosporiosis_d     0.3277    0.6610    0.4382       177
+               stripe_d     0.9426    0.8911    0.9161      4278
+
+               accuracy                         0.8472      8343
+              macro avg     0.6606    0.7577    0.6896      8343
+           weighted avg     0.8736    0.8472    0.8566      8343
+
+  Classification report saved to: reports\maize_initial_best_img160_dr0.4_lr0.001_aug_mild_classification_report.txt
+
+Step 7: Generating Confusion Matrix...
+Saved confusion matrix plot to: reports\maize_initial_best_img160_dr0.4_lr0.001_aug_mild_confusion_matrix.png
+
+Total evaluation duration: 44.16 minutes.

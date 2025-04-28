@@ -30,36 +30,7 @@ app.add_middleware(
 # --- Configuration ---
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
-
-# Try multiple possible model directories to be more robust
-possible_model_dirs = [
-    os.path.join(project_root, 'best_models'),  # Standard local path
-    '/opt/render/project/src/best_models',      # Render.com path with disk mount
-    os.path.join(project_root, 'models'),       # Fallback to models directory
-    '/app/best_models',                         # Another common path in containerized environments
-    os.path.abspath('best_models')              # Absolute path as last resort
-]
-
-# Find the first directory that exists
-MODEL_DIR = None
-for dir_path in possible_model_dirs:
-    logger.info(f"Checking for models in: {dir_path}")
-    if os.path.exists(dir_path):
-        MODEL_DIR = dir_path
-        logger.info(f"Found models directory at: {MODEL_DIR}")
-        # List files in the directory for debugging
-        try:
-            files = os.listdir(dir_path)
-            logger.info(f"Files in {dir_path}: {files}")
-        except Exception as e:
-            logger.error(f"Error listing files in {dir_path}: {e}")
-        break
-
-if MODEL_DIR is None:
-    logger.critical("Could not find any valid models directory!")
-    # Default to first option even if it doesn't exist
-    MODEL_DIR = possible_model_dirs[0]
-    logger.info(f"Using default model directory: {MODEL_DIR}")
+MODEL_DIR = os.path.join(project_root, 'best_models')
 
 # Image size MUST match the training size
 IMG_SIZE = (160, 160)
@@ -85,16 +56,16 @@ def load_model(crop_key):
     """Load model on demand to save memory"""
     if crop_key in models:
         return models[crop_key]
-
+    
     filename = expected_models.get(crop_key)
     if not filename:
         return None
-
+    
     model_path = os.path.join(MODEL_DIR, filename)
     if not os.path.exists(model_path):
         logger.error(f"Model file not found: {model_path}")
         return None
-
+    
     try:
         logger.info(f"Loading model for '{crop_key}' from {filename}...")
         model = tf.keras.models.load_model(model_path)
@@ -114,7 +85,7 @@ async def root():
     for crop, filename in expected_models.items():
         if os.path.exists(os.path.join(MODEL_DIR, filename)):
             available_models.append(crop)
-
+    
     return {
         "message": "Crop Disease Predictor API (Lite) is running.",
         "available_models": available_models,
@@ -136,7 +107,7 @@ async def predict_disease(
     if crop_key not in expected_models:
         logger.warning(f"Invalid crop type received: '{crop}'")
         raise HTTPException(status_code=400, detail=f"Invalid crop type '{crop}'. Available: {list(expected_models.keys())}")
-
+    
     if crop_key not in CLASS_NAMES:
         logger.error(f"Class names not configured for crop type '{crop}'")
         raise HTTPException(status_code=500, detail=f"Internal configuration error: Class names missing for '{crop}'.")
@@ -163,16 +134,16 @@ async def predict_disease(
         preds = model.predict(tensor, verbose=0)[0]
         predicted_index = int(np.argmax(preds))
         confidence = float(preds[predicted_index])
-
+        
         class_names_for_crop = CLASS_NAMES[crop_key]
         if predicted_index >= len(class_names_for_crop):
             logger.error(f"Predicted index {predicted_index} is out of bounds")
             predicted_label = "Prediction Index Error"
         else:
             predicted_label = class_names_for_crop[predicted_index]
-
+        
         logger.info(f"Prediction: '{predicted_label}', Confidence: {confidence:.4f}")
-
+        
         # Clear model from memory if we're running low on memory
         # Uncomment this if you're having memory issues
         # if len(models) > 1:  # Keep at least one model in memory
@@ -180,7 +151,7 @@ async def predict_disease(
         #     import gc
         #     gc.collect()
         #     logger.info(f"Cleared model '{crop_key}' from memory to save resources")
-
+        
         return {
             "crop": crop,
             "prediction": predicted_label,

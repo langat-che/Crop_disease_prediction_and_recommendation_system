@@ -2,15 +2,12 @@ services:
   # Backend API service
   - type: web
     name: crop-disease-predictor-api
-    runtime: python
-    region: frankfurt  # You can change this to a region closer to your users if needed
-    buildCommand: pip install -r requirements.txt && python setup_models.py
+    env: python
+    buildCommand: pip install -r requirements.txt
     startCommand: cd backend && python app_lite.py
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
       - key: PORT
         value: 10000
-      - key: PYTHON_VERSION
-        value: 3.10.0
     plan: free
-    # Free tier doesn't support persistent disk, so we'll use the ephemeral disk
-    # We'll rely on the setup_models.py script to copy models during build

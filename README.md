@@ -32,3 +32,43 @@ Agriculture is a cornerstone of economies worldwide, yet crop diseases significa
 - Data Augmentation: Enhances model robustness through extensive image augmentation techniques.
 - Recommendation Engine: Offers specific treatment and prevention advice based on the identified disease.
 - User-Friendly Interface: Designed for easy integration into web or mobile applications for real-time predictions.
+
+### Dataset
+The model is trained on the TOM2024 Category B dataset, which comprises thousands of labeled images representing various diseases affecting maize, tomato, and onion crops.
+
+### Model Performance
+Validation Accuracy: Achieved up to 85% accuracy on the validation set after fine-tuning.
+Confusion Matrix: Detailed confusion matrices are available in the results/ directory, showcasing the model's performance across different classes.
+
+### Visualizations
+The notebooks/ directory contains Jupyter notebooks with:
+- Training and validation accuracy/loss plots.
+- Confusion matrices.
+- Sample predictions with corresponding recommendations.
+
+### Recommendation Engine
+Upon predicting the disease class, the system provides:
+- Treatment Suggestions: Recommended pesticides or fungicides.
+- Preventive Measures: Best practices to prevent disease recurrence.
+- Agronomic Tips: Additional advice tailored to the specific crop and disease.
+
+### Model Architecture
+Base Model: ResNet50 pre-trained on ImageNet.
+Fine-Tuning: Unfrozen top layers for domain-specific feature learning.
+Additional Layers:
+- Global Average Pooling
+- Dropout (0.5)
+- Dense layer with softmax activation for classification.
+
+## Conclusion
+This AI-powered system demonstrates the potential of deep learning in agriculture, offering a practical solution for early detection and management of crop diseases. By integrating advanced image classification with actionable recommendations, it serves as a valuable tool for farmers and agricultural stakeholders.
+
+## Recommendations
+- Data Expansion: Incorporate more diverse datasets to improve model generalization.
+- Mobile Integration: Develop a mobile application for on-field disease detection.
+- Real-Time Updates: Implement a system for updating the model with new data to adapt to emerging diseases.
+
+###  Contact
+For questions or suggestions:
+Email: your.email@example.com
+Linkedln:

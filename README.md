@@ -70,5 +70,9 @@ This AI-powered system demonstrates the potential of deep learning in agricultur
 
 ###  Contact
 For questions or suggestions:
-Email: your.email@example.com
+Email:
+- langatchebetbev@gmail.com
+- oyakapeliamase@gmail.com
 Linkedln:
+- https://www.linkedin.com/in/beverlyne-l-7926041a2
+- https://www.linkedin.com/in/amase-oyakapeli-7848a8343/

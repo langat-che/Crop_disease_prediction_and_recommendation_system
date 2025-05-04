@@ -74,8 +74,9 @@ For questions or suggestions:
 Email:
 - langatchebetbev@gmail.com
 - oyakapeliamase@gmail.com
-
+- felixmwendwa014@gmail.com
   
 Linkedln:
 - https://www.linkedin.com/in/beverlyne-l-7926041a2
 - https://www.linkedin.com/in/amase-oyakapeli-7848a8343/
+- https://www.linkedin.com/in/felix-mwendwa-3b78a2238/

@@ -1,6 +1,6 @@
 # Crop Disease Prediction AI
 ## Overview
-This project focuses on developing an AI-driven system to detect and classify crop diseases from leaf images, specifically targeting maize, tomato, and onion. Utilizing a fine-tuned ResNet50 deep learning model, the system not only identifies diseases but also provides tailored treatment and prevention recommendations, aiming to assist farmers and agricultural professionals in early disease detection and management.
+This project focuses on developing an AI-driven system to detect and classify crop diseases from leaf images, specifically targeting maize, tomato, and onion. Utilizing a fine-tuned InceptionV3 and Custom CNN deep learning model, the system not only identifies diseases but also provides tailored treatment and prevention recommendations, aiming to assist farmers and agricultural professionals in early disease detection and management.
 
 ## Business Understanding
 Agriculture is a cornerstone of economies worldwide, yet crop diseases significantly impact yield and farmer livelihoods. Early detection and management of these diseases are crucial. This project aims to leverage AI to assist farmers and agricultural professionals in identifying crop diseases promptly, thereby reducing losses and improving food security.
@@ -28,7 +28,7 @@ Agriculture is a cornerstone of economies worldwide, yet crop diseases significa
 
   ### Features
 - Multi-Crop Support: Detects diseases across maize, tomato, and onion crops.
-- Deep Learning Model: Employs a fine-tuned ResNet50 architecture for accurate classification.
+- Deep Learning Model: Employs a fine-tuned InceptionV3 and Custom CNN model architecture for accurate classification.
 - Data Augmentation: Enhances model robustness through extensive image augmentation techniques.
 - Recommendation Engine: Offers specific treatment and prevention advice based on the identified disease.
 - User-Friendly Interface: Designed for easy integration into web or mobile applications for real-time predictions.
@@ -53,7 +53,7 @@ Upon predicting the disease class, the system provides:
 - Agronomic Tips: Additional advice tailored to the specific crop and disease.
 
 ### Model Architecture
-Base Model: ResNet50 pre-trained on ImageNet.
+Base Model: InceptionV3 pre-trained on ImageNet.
 Fine-Tuning: Unfrozen top layers for domain-specific feature learning.
 Additional Layers:
 - Global Average Pooling

@@ -76,9 +76,11 @@ Email:
 - oyakapeliamase@gmail.com
 - felixmwendwa014@gmail.com
 - kelvinnyawira2022@gmail.com
+- adnanahmedmohamud1@gmail.com
   
 Linkedln:
 - https://www.linkedin.com/in/beverlyne-l-7926041a2
 - https://www.linkedin.com/in/amase-oyakapeli-7848a8343/
 - https://www.linkedin.com/in/felix-mwendwa-3b78a2238/
 - https://www.linkedin.com/in/kelvin-nyawira
+- https://www.linkedin.com/in/adnan-mohamud-4567942b7

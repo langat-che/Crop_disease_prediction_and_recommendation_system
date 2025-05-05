@@ -16,22 +16,8 @@ Specific Objectives
 - To integrate a recommendation engine that provides specific treatment and prevention strategies based on the identified disease.
 - To design a user-friendly interface that allows farmers and agricultural professionals to easily upload images and receive immediate feedback.
 -  To deploy the system in a scalable manner, facilitating integration with mobile and web applications for broader accessibility.
+-  
 ---
- ### Table of Contents
-- Features
-- Dataset
-- Installation
-- Usage
-- Model Performance
-- Visualizations
-- Recommendation Engine
-- Model Architecture
-- Conclusion
-- Recommendations
-- License
-- Contributing
-- Contact
-
   ### Features
 - Multi-Crop Support: Detects diseases across maize, tomato, and onion crops.
 - Deep Learning Model: Employs a fine-tuned InceptionV3 and Custom CNN model architecture for accurate classification.
@@ -39,13 +25,46 @@ Specific Objectives
 - Recommendation Engine: Offers specific treatment and prevention advice based on the identified disease.
 - User-Friendly Interface: Designed for easy integration into web or mobile applications for real-time predictions.
 
+---
 ### Dataset
-The model is trained on the TOM2024 Category B dataset, which comprises thousands of labeled images representing various diseases affecting maize, tomato, and onion crops.
+Source: Mendeley TOM2024 Dataset
+- 25,844 raw images
+- 12,227 labeled images
+- 3 Crops: Tomato, Onion, Maize
+- 30 disease categories
+- The dataset supports sustainable agriculture and early detection of plant health issues.
 
-### Model Performance
-Validation Accuracy: Achieved up to 85% accuracy on the validation set after fine-tuning.
-Confusion Matrix: Detailed confusion matrices are available in the results/ directory, showcasing the model's performance across different classes.
+---
+### 🧪 Modeling
+To classify crop diseases from images, we experimented with two primary convolutional models:
+| Model           | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| **Custom CNN**  | A manually designed CNN with multiple convolutional and pooling layers   |
+| **InceptionV3** | A pre-trained, deep architecture known for handling multi-scale features |
 
+---
+### 🏗️ Steps Involved
+1. Data Preprocessing
+- Image resizing (typically to 299x299 for InceptionV3)
+- Normalization and augmentation (horizontal flip, rotation, zoom)
+2. Model Training
+- Custom CNN trained from scratch
+- InceptionV3 used transfer learning with ImageNet weights
+- Fine-tuning applied to top layers of InceptionV3
+- Early stopping and learning rate decay applied
+3. Evaluation
+- Dataset split: 80% training, 20% validation
+- Evaluated using Accuracy, Precision, Recall, and F1 Score
+- Confusion matrix plotted for class-wise performance
+
+----
+### 🏆 Performance Summary
+| Model       | Accuracy  | F1 Score   | Remarks                               |
+| ----------- | --------- | ---------- | ------------------------------------- |
+| Custom CNN  | \~85%     | \~0.83     | Lightweight, but less accurate        |
+| InceptionV3 | **\~91%** | **\~0.89** | Best performer, strong generalization |
+
+----
 ### Visualizations
 The notebooks/ directory contains Jupyter notebooks with:
 - Training and validation accuracy/loss plots.
@@ -74,6 +93,13 @@ This AI-powered system demonstrates the potential of deep learning in agricultur
 - Mobile Integration: Develop a mobile application for on-field disease detection.
 - Real-Time Updates: Implement a system for updating the model with new data to adapt to emerging diseases.
 
+---
+## 📂 Repository Contents
+
+## 🤝 Acknowledgements
+Thanks to all contributors and stakeholders for their input and support in making this project successful.
+
+---
 ###  Contact
 For questions or suggestions:
 

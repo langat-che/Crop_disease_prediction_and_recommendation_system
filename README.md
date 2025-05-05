@@ -2,15 +2,21 @@
 ## Overview
 This project focuses on developing an AI-driven system to detect and classify crop diseases from leaf images, specifically targeting maize, tomato, and onion. Utilizing a fine-tuned InceptionV3 and Custom CNN deep learning model, the system not only identifies diseases but also provides tailored treatment and prevention recommendations, aiming to assist farmers and agricultural professionals in early disease detection and management.
 
+---
 ## Business Understanding
 Agriculture is a cornerstone of economies worldwide, yet crop diseases significantly impact yield and farmer livelihoods. Early detection and management of these diseases are crucial. This project aims to leverage AI to assist farmers and agricultural professionals in identifying crop diseases promptly, thereby reducing losses and improving food security.
 
+---
 ## Objectives
-- Disease Detection: Develop an AI model capable of accurately identifying diseases in maize, tomato, and onion crops through leaf imagery.​
-- User Accessibility: Create an intuitive interface that allows users to upload images and receive immediate diagnoses and recommendations.​
-- Scalability: Ensure the system can be expanded to include additional crops and diseases in the future.​
-- Integration: Facilitate integration with existing agricultural platforms and tools to maximize reach and utility.
+Main Objective
+- To develop an AI-powered system that accurately detects crop diseases and pests from images.
 
+Specific Objectives
+- To develop an AI-based model that accurately identifies pests or diseases in maize, tomato, and onion using leaf images.
+- To integrate a recommendation engine that provides specific treatment and prevention strategies based on the identified disease.
+- To design a user-friendly interface that allows farmers and agricultural professionals to easily upload images and receive immediate feedback.
+-  To deploy the system in a scalable manner, facilitating integration with mobile and web applications for broader accessibility.
+---
  ### Table of Contents
 - Features
 - Dataset

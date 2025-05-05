@@ -95,6 +95,11 @@ This AI-powered system demonstrates the potential of deep learning in agricultur
 
 ---
 ## 📂 Repository Contents
+- Data
+- Notebook
+- Presentation slides
+
+ --- 
 
 ## 🤝 Acknowledgements
 Thanks to all contributors and stakeholders for their input and support in making this project successful.

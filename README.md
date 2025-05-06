@@ -69,6 +69,34 @@ To classify crop diseases from images, we experimented with two primary convolut
 The notebooks/ directory contains Jupyter notebooks with:
 - Training and validation accuracy/loss plots.
 - Confusion matrices.
+  Screenshot 2025-05-05 142032.png
+#### High Accuracy for Major Classes:
+- The model performs exceptionally well, especially with major classes like healthy_leaf, which has 1986 correct classifications, indicating strong performance.
+#### Misclassifications:
+A few misclassifications occur:
+- curvulariosis_d has 2 misclassifications with healthy_leaf and stripe_d.
+- stripe_d has some misclassifications with spodoptera_frugiperda_d (4), curvulariosis_d (3), and heminthosporiosis_d (2), but these are low compared to the total instances.
+#### Class Imbalance:
+- The model performs consistently across classes with no significant imbalances, ensuring reliable classification without bias.
+#### Small Error Margins:
+- Even with misclassifications, the error margins are small compared to the correct predictions, such as stripe_d having only a small fraction of misclassifications from 3868 instances.
+##### Conclusion:
+The Maize Model exhibits strong performance in disease classification with minimal errors. The model demonstrates robust understanding of the dataset and is highly reliable, making it suitable for real-world agricultural applications.
+
+Screenshot 2025-05-05 142104.png
+
+---
+Screenshot 2025-05-05 142141.png
+- The confusion matrix for the tomato model (InceptionV3) shows excellent classification performance, with most predictions correctly aligning along the diagonal.
+Minor misclassifications were primarily observed in the "healthy_leaf," "mite_d," and "virosis_d" classes, consistent with the slight reductions in recall seen in the classification report.
+Overall, the model demonstrates strong accuracy and consistency across all 14 tomato disease and pest categories, confirming its reliability for practical use.
+Screenshot 2025-05-05 142159.png
+
+---
+Screenshot 2025-05-05 142246.png
+Screenshot 2025-05-05 142305.png
+
+---
 - Sample predictions with corresponding recommendations.
 
 ### Recommendation Engine

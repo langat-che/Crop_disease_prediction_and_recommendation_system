@@ -69,6 +69,7 @@ To classify crop diseases from images, we experimented with two primary convolut
 The notebooks/ directory contains Jupyter notebooks with:
 - Training and validation accuracy/loss plots.
 - Confusion matrices.
+  
   Screenshot 2025-05-05 142032.png
 #### High Accuracy for Major Classes:
 - The model performs exceptionally well, especially with major classes like healthy_leaf, which has 1986 correct classifications, indicating strong performance.

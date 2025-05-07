@@ -1,5 +1,4 @@
 # Scripts/evaluate.py
-# (Using the complete code block from the previous message, starting with '# Scripts/evaluate.py' and ending with 'evaluate_saved_model(args)')
 import os
 import argparse
 import tensorflow as tf

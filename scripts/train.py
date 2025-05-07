@@ -1,5 +1,4 @@
 # Scripts/train.py
-# (Using the complete code block from the previous message, starting with '# Scripts/train.py' and ending with 'train_initial_model(args)')
 import os
 import argparse
 import tensorflow as tf

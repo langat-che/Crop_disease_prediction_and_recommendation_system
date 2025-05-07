@@ -1,5 +1,4 @@
 # Scripts/fine_tune.py
-# (Using the complete code block from the previous message, starting with '# Scripts/fine_tune.py' and ending with 'fine_tune_model(args)')
 import os
 import argparse
 import tensorflow as tf

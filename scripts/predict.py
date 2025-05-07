@@ -1,5 +1,4 @@
 # Scripts/predict.py
-# (Using the complete code block from the previous message, starting with '# Scripts/predict.py' and ending with 'predict_single_image(args)')
 import os
 import argparse
 import tensorflow as tf
